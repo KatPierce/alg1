@@ -46,8 +46,9 @@ public class Main {
                    l=1;
                    r=0; 
                     } 
-            days.indMin=l;
-            days.indMax=r;
+
+            
+            days.indMin=l;            
             days.min=a[l];
             days.purDay=l;
             days.saleDay=r;            
@@ -57,70 +58,41 @@ public class Main {
             return days;    
         }
         Days tmp= finding(n-1,a);
-        int mn;   
-        int mx;                    //индекс мин в массиве
-        int l2;                  // искомый индекс дня покупки
-        int r2;                  //искомый индкс продажи
+        int l2;   
+        int imax;                    
+        int l3;                 
         int min;
         int max;
         if (tmp.min>a[n]) 
-             mn= n ;
-                   else  mn=days.indMin;
-        if (tmp.max<a[n]) 
-             mx= n ;
-                   else  mx=days.indMax;
+             l2= n ;
+                   else  l2=tmp.indMin;
         
-        if((a[n]-tmp.min<tmp.profit)&&(tmp.min>a[n]))
-            l2=n;
-                    else l2= tmp.indMin ;
-        if ((a[n]-tmp.min>tmp.profit)&&(tmp.max<a[n]))
-            r2=n; else
-                      r2=tmp.indMax;
+        if((a[n]-tmp.min>tmp.profit)&&(tmp.min>a[n]))
+            l3=n;
+                    else l3= tmp.indMin ;
+
+        
         if (a[n]-tmp.min>tmp.profit)
             min=tmp.min; 
                     else min=tmp.purPrice;
         if (a[n]-tmp.min>tmp.profit)
             max=a[n]; 
                     else max=tmp.salePrice;
-        days.indMin = mn;
-        days.min = a[mn];
-        days.indMax=mx;
-        days.max=a[mx];
-        days.saleDay= r2;
-        days.purDay= l2;
+        if (a[n]-tmp.min>tmp.profit)
+            imax=n; 
+                    else imax=tmp.saleDay;
+        days.indMin = l2;
+        days.min = a[l2];        
+        days.max=a[n];
+        days.saleDay= imax;
+        days.purDay= l3;
         days.purPrice = min;
         days.salePrice = max;
-        days.profit = max - min;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        days.profit = max - min;  
+       
 //         if (days.profit<0) throw  new IllegalArgumentException ("Невозможно получить прибыль в данных условиях");
 //            else
          return days; 
     }
     
 }
-//  if((a[n]-tmp.min<tmp.profit)&&(tmp.min>a[n]))
-//            l2=n;
-//                    else l2= tmp.indMin ;
-//        if ((a[n]-tmp.min>tmp.profit)&&(tmp.min<a[n]))
-//            r2=n; else
-//                      r2=tmp.saleDay;
-//        if (a[n]-tmp.min>tmp.profit)
-//            min=tmp.min; 
-//                    else min=tmp.purPrice;
-//        if (a[n]-tmp.min>tmp.profit)
-//            max=a[n]; 
-//                    else max=tmp.salePrice;
