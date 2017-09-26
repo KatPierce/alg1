@@ -14,19 +14,14 @@ public class Days {
     int profit;        // доход
     int purPrice;      //цена покупки
     int salePrice ;    //цена продажи
-    int indMin;        //индекс минимального эл-та 
-    int indMax;
+    int indMin;        //индекс минимального эл-та     
     int min;           // значение минимального
     int max;
-
-
-    
-
    
-    @Override
-    public String toString() {
-        return "День покупки- "+ purDay+ "; День продажи- "+saleDay+"; Прибыль- "+ profit;
-    }
+
+
     
+
+
     
 }
