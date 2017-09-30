@@ -23,6 +23,28 @@ public class Result {
     public String toString() {
         return "Purchase- "+ purDay+ "; Sale Day- "+saleDay+"; Profit- "+ profit;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) 
+            return true;
+        if (o == null)
+            return false;
+        if (getClass() != o.getClass())
+            return false;
+        Result other = (Result) o;
+        if (profit != other.profit)
+            return false;
+        if (saleDay != other.saleDay)
+            return false;
+        if (purDay != other.purDay)
+            return false;
+        return true;
+    }       
+        
+
+    
+    
     
     
     

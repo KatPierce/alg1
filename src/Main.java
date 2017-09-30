@@ -44,37 +44,37 @@
 
             Days days = new Days();
             if (n == 1) {
-                int l;                  //индекс мин
-                int r;                  //индекс макс
+                int leftInd;                  //индекс мин
+                int rightInd;                  //индекс макс
                 if (a[1] > a[0]) {
-                    l = 0;
-                    r = 1;
+                    leftInd = 0;
+                    rightInd = 1;
                 }
                 else {
-                    l = 1;
-                    r = 0;
+                    leftInd = 1;
+                    rightInd = 0;
                 }
-                days.indMin = l;
-                days.min = a[l];
-                days.purDay = l;
-                days.saleDay = r;
+                days.indMin = leftInd;
+                days.min = a[leftInd];
+                days.purDay = leftInd;
+                days.saleDay = rightInd;
                 days.purPrice = a[0];
                 days.salePrice = a[1];
                 days.profit = a[1] - a[0];
                 return days;
             }
             Days tmp = finding(n - 1, a);
-            int l2;
+            int imin;
             int imax;
-            int l3;
+            int curLeft;
             int min;
             int max;
             if (tmp.min > a[n])
-                l2 = n;
-            else l2 = tmp.indMin;
+                imin = n;
+            else imin = tmp.indMin;
             if ((a[n] - tmp.min > tmp.profit) && (tmp.min > a[n]))
-                l3 = n;
-            else l3 = tmp.indMin;
+                curLeft = n;
+            else curLeft = tmp.indMin;
             if (a[n] - tmp.min > tmp.profit)
                 min = tmp.min;
             else min = tmp.purPrice;
@@ -84,11 +84,11 @@
             if (a[n] - tmp.min > tmp.profit)
                 imax = n;
             else imax = tmp.saleDay;
-            days.indMin = l2;
-            days.min = a[l2];
+            days.indMin = imin;
+            days.min = a[imin];
             days.max = a[n];
             days.saleDay = imax;
-            days.purDay = l3;
+            days.purDay = curLeft;
             days.purPrice = min;
             days.salePrice = max;
             days.profit = max - min;
